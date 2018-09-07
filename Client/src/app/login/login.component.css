@@ -6,9 +6,9 @@ body, html {
 }
 
 .card-container.card {
-    max-width: 350px;
+    max-width: 424px;
     padding: 40px 40px;
-    
+    BORDER: #212529 SOLID;
 }
 
 .btn {
@@ -24,7 +24,7 @@ body, html {
  * Card component
  */
 .card {
-    background-color: rgb(79, 148, 83);
+    background-color: rgb(51, 40, 45,0.36);
     /* just in case there no content*/
     padding: 20px 25px 30px;
     margin: 0 auto 25px;
@@ -58,7 +58,25 @@ body, html {
     margin: 10px 0 0;
     min-height: 1em;
 }
+.form-group has-feedback
+{
+position:absolute;
+top: 25px;
+right:0;
+z-index:2;
+width: 24px;
+height: 24px;
+text-align: center;
+}
+span.fa {
+    position: absolute;
+    top: 50%;    
+    transform: translateY(-50%);
+}
 
+.form-group {
+    position: relative;
+}
 
 .form-signin #inputEmail,
 .form-signin #inputPassword {
@@ -110,6 +128,8 @@ body, html {
 .btn.btn-signin:focus {
     background-color: rgb(12, 97, 33);
 }
+
+
 
 
 body { 

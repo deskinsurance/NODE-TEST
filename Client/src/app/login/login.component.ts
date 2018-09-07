@@ -4,6 +4,7 @@ import { AuthGuardService } from '../auth.guard';
 import {UserLogin} from '../model/login.model';
 import {LoginService} from '../services/login.service';
 import {IUserLogin} from '../model/login.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -20,30 +21,21 @@ export class LoginComponent implements OnInit {
   IsActive:null
 }
 UserList:IUserLogin[];
-  constructor(private router : Router, private route: ActivatedRoute,private svc:LoginService) { }
+  constructor(private router : Router, private route: ActivatedRoute,private svc:LoginService,  private toastr: ToastrService) { }
 
-  ngOnInit() {
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-    //this.svc.getUser().subscribe(data=> this.UserList=data);
+  ngOnInit() {  
     this.svc.getUser().subscribe(data=>{
-      this.UserList=data.recordsets
-      console.log("hello",this.UserList);
+      this.UserList=data.recordset
     });
   }
 
   login() : void {
-    var isUserLogin=false;
-    for (let item of this.UserList) {
-      for (var i = 0; this.UserList.length >= i; i++) {
-        if(this.User.UserName.toLocaleLowerCase().trim() == item[i].UserName && this.User.Password.toLocaleLowerCase().trim() == item[i].Password){
-          this.router.navigate(['/user']);
-          isUserLogin=true;
-         }
-      }
-    }
-   if(!isUserLogin) {
-    isUserLogin=false;
-      alert("Invalid credentials");
-    }
+  if(this.UserList.find(c=>c.UserName==this.User.UserName && c.Password==this.User.Password)){
+    this.router.navigate(['/home']);
+    this.toastr.success("Login Suceded!","Home");    
+   }
+   else {
+    this.toastr.error("Invalid credentials!","Login");   
+   }
   }
 }
