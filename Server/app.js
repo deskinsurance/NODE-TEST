@@ -7,7 +7,6 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var employeeRouter = require('./routes/employee');
-
 var app = express();
 
 // view engine setup
@@ -20,28 +19,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use((req,res,next)=>{
-res.header("Access-Control-Allow-Origin","*");
-res.header(
-  "Access-Contro-Allow-Headers",
-  "Origin,X-Request-With,Content-Type,Accept,Authorization"
-);
-if(req.method==='OPTIONS'){
-  res.header('Access-Control-Allow-Methods','PUT,POST,PATCH,DELETE,GET');
-  return res.status(200).json({});
-}
-next();
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  next();
 });
 
-//app.use('/api/employees', indexRouter);
 app.use('/api/users', usersRouter);
 app.use('/api/employee', employeeRouter);
-
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
 });
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development

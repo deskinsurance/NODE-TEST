@@ -1,3 +1,6 @@
+.ui-multiselect .ui-multiselect-label {
+  padding: none;
+}
 body, html, .container-fluid {
   height: 100%;
   
@@ -28,9 +31,9 @@ background-color: rgb(51, 40, 45,0.36);
 padding: 8px 8px;
 }
 
-.bg-dark {
+/* .bg-dark {
 background-color: rgb(51, 40, 45,0.36) !important;
-}
+} */
 
 .header a {
 float: left;

@@ -1,6 +1,10 @@
 <div class="header">
     <a href="#default" class="logo"><img style="float:left" src="assets/images/pyramid-solutions-logo.png"></a>
-    <div class="header-center"><h4>Employee Skill Management</h4></div>
+    <div class="header-center"><h4>Employee Skill Management</h4>
+   <button mat-raised-button color="primary" (click)="logout()" style="float:right;position: relative;margin-top: -62px!important;" class="btn btn-danger">logout</button>
+    </div>
+    <div class="header-center"><h4>{{UserName}}</h4></div>
+   
   </div>
 <div class="container-fluid">
   <div class="row wrapper">
@@ -19,23 +23,53 @@
           </nav>
       </aside>
       <div class="col bg-faded py-3">
-      <button (click)="exportToExcel()">ExportToExcel</button>
-      <div style="display: flex; flex-direction: row">
-   <ag-grid-angular #agGrid style="width: 100%!important; height: 370px;border-style: solid;
-        border-color: coral;overflow: hidden; flex-grow: 1" 
-        class="ag-theme-fresh form-control panelbutton ag-pinned-header"
-        [columnDefs]="columnDefs"
-        [rowData]="rowData"
-        [enableSorting]="true"
-        [multiSortKey]="multiSortKey"
-        [animateRows]="true"
-        [pagination]="true"
-        [paginationPageSize]="10"
-        [enableFilter]="true"
-        [floatingFilter]="true">
-        (gridReady)="onGridReady($event)"
-    </ag-grid-angular>
+        <div style="display: flex; flex-direction: row">
+  <p-dataTable #dt [value]="rowData" exportFilename="EmployeeDetails" [rows]="10" [paginator]="true" >
+        <p-header>
+                <div class="ui-helper-clearfix">
+                    <button type="button" pButton icon="fa-file-o" iconPos="left" label="Export To Excel" (click)="dt.exportCSV()" style="float:left"></button>                        
+                </div>
+            </p-header>
+    <p-column field="FirstName" header="FirstName" [sortable]="true" [filter]="true" filterPlaceholder="Search" ></p-column>        
+    <p-column field="MiddleName" header="MiddleName" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+    <p-column field="LastName" header="LastName" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+    <p-column field="EmployeeID" header="EmployeeID" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+    <p-column field="Department" [filter]="true" filterMatchMode="in" header="Department">\
+       
+            <ng-template pTemplate="filter" let-col>
+                    <p-multiSelect [options]="Department" defaultLabel="Select" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-multiSelect>
+                </ng-template>
+    </p-column>
+    <p-column field="SkillName" header="SkillName" [filter]="true" filterMatchMode="in">
+            <ng-template pTemplate="filter" let-col>
+                    <p-multiSelect [options]="SkillName" defaultLabel="Select" (onChange)="dt.filter($event.value,col.field,col.filterMatchMode)" styleClass="ui-column-filter"></p-multiSelect>
+                </ng-template>
+    </p-column>
+    <p-column field="DomainName" header="DomainName" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+    <p-column field="SkillLevel" header="SkillLevel" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+    
+</p-dataTable>
+  <!-- <div class="col bg-faded py-3">
+  <button (click)="exportToExcel()">ExportToExcel</button>
+  <div style="display: flex; flex-direction: row">
+<ag-grid-angular #agGrid style="width: 100%!important; height: 370px;border-style: solid;
+    border-color: coral;overflow: hidden; flex-grow: 1" 
+    class="ag-theme-fresh form-control panelbutton ag-pinned-header"
+    [columnDefs]="columnDefs"
+    [rowData]="rowData"
+    [enableSorting]="true"
+    [multiSortKey]="multiSortKey"
+    [animateRows]="true"
+    [pagination]="true"
+    [paginationPageSize]="10"
+    [enableFilter]="true"
+    [floatingFilter]="true">
+    (gridReady)="onGridReady($event)"
+</ag-grid-angular>
+</div>
+</div> -->
 </div>
 </div>
-  </div>
+
+</div>
 </div>

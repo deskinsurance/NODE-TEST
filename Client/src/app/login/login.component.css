@@ -2,18 +2,17 @@ body, html {
     height: 100%;
     background-repeat: no-repeat;
     background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
-    background-color: rgb(209, 212, 209) !important;
+    background-color:#e6effa !important;
 }
 
 .card-container.card {
     max-width: 424px;
     padding: 40px 40px;
-    BORDER: #212529 SOLID;
+    BORDER:3px solid #102442;
 }
 
 .btn {
     font-weight: 700;
-    height: 36px;
     -moz-user-select: none;
     -webkit-user-select: none;
     user-select: none;
@@ -24,7 +23,7 @@ body, html {
  * Card component
  */
 .card {
-    background-color: rgb(51, 40, 45,0.36);
+    background-color:#102442;
     /* just in case there no content*/
     padding: 20px 25px 30px;
     margin: 0 auto 25px;
@@ -39,14 +38,20 @@ body, html {
 }
 
 .profile-img-card {
-    width: 96px;
-    height: 96px;
-    margin: 0 auto 10px;
-    display: block;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
+    width: 256px;
+    height: 69px;
+  
+    
 }
+.login_lhs{ float: left;}
+.login_rhs {
+	    background: url(/assets/images/login_bg.png) no-repeat 0 0;
+   	    height: auto;
+   	    background-size: cover;
+           height: 100vh;
+           float: right;
+    }
+    
 
 /*
  * Form styles
@@ -107,12 +112,11 @@ span.fa {
 
 .btn.btn-signin {
     /*background-color: #4d90fe; */
-    background-color: rgb(18, 85, 114);
+    background-color:#6dbe4b;
     /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
     padding: 0px;
     font-weight: 700;
-    font-size: 14px;
-    height: 36px;
+    font-size: 20px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     border-radius: 3px;
@@ -121,17 +125,19 @@ span.fa {
     -moz-transition: all 0.218s;
     -webkit-transition: all 0.218s;
     transition: all 0.218s;
+    font-weight: normal;
+    padding:7px;
 }
 
 .btn.btn-signin:hover,
 .btn.btn-signin:active,
 .btn.btn-signin:focus {
-    background-color: rgb(12, 97, 33);
+    background-color:#368018;
 }
 
 
 
-
+    
 body { 
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;

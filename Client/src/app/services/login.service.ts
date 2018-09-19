@@ -10,15 +10,8 @@ import 'rxjs/add/operator/map';
 export class LoginService{
 
     constructor(private _http:HttpClient){}
-
-    /*getUser(): Observable<IUserLogin[]>{
-      return this._http.get<IUserLogin[]>("http://localhost:3000/api/users");
-    }*/
    getUser(){
       return this._http.get<IUserLogin>("http://localhost:3000/api/users");
     }
-   /* getUser(){
-      return this._http.get("http://localhost:3000/api/users").subscribe(data=>{console.log("we got",data.recordsets)});
-    }*/
-   
+  
 }

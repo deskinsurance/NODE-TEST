@@ -2,7 +2,7 @@ var sqlDb = require("mssql");
 var settings = require("../settings");
 
 exports.excecuteSql = function (spName,params ,callback) {
-    var conn = new sqlDb.ConnectionPool(settings.dbConfig);
+    var conn = new sqlDb.Connection(settings.dbConfig);
     conn.connect()
         .then(function () {
             var req = new sqlDb.Request(conn);
