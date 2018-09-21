@@ -20,6 +20,9 @@ import {DataTableModule} from 'primeng/datatable';
 import {ButtonModule} from 'primeng/button';
 import {DropdownModule} from 'primeng/dropdown';
 import {MultiSelectModule} from 'primeng/multiselect';
+import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
+import {MenuItem} from 'primeng/api';                 //api
+
 
 
 @NgModule({
@@ -42,7 +45,9 @@ import {MultiSelectModule} from 'primeng/multiselect';
      ButtonModule,
      DropdownModule,
      MultiSelectModule,
-     ReactiveFormsModule  
+     ReactiveFormsModule,     
+     AccordionModule
+
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

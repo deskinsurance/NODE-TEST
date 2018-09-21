@@ -24,7 +24,7 @@
       </aside>
       <div class="col bg-faded py-3">
         <div style="display: flex; flex-direction: row">
-  <p-dataTable #dt [value]="rowData" exportFilename="EmployeeDetails" [rows]="10" [paginator]="true" >
+  <p-dataTable #dt [value]="rowData" exportFilename="EmployeeDetails" [rows]="10" [paginator]="true" responsive="true">
         <p-header>
                 <div class="ui-helper-clearfix">
                     <button type="button" pButton icon="fa-file-o" iconPos="left" label="Export To Excel" (click)="dt.exportCSV()" style="float:left"></button>                        
